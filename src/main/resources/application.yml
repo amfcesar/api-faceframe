@@ -1,0 +1,23 @@
+server:
+  port: ${PORT:8080}
+spring:
+  datasource:
+    url: jdbc:postgresql://172.17.0.2/faceframe?useSSL=false
+    username: postgres
+    password:
+    dbcp2:
+      test-while-idle: true
+      validation-query: select 1
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+pagina:
+  quantidade_pagina: 25
+
+jwt:
+  secret: fdaa0031-3397-476d-aa44-1d2a364e5eee
+  expiration: 86400000
+
+api:
+  base-url: http://localhost:${server.port}
