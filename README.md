@@ -49,7 +49,7 @@ O contêiner api-faceframe depende dos seguintes contêiners `postgres` e `ngnix
 
 ## API Documentation
 
-We document our API with [Swagger](https://swagger.io/). Check it out here:
+Documentamos nossa API com [Swagger](https://swagger.io/). Confira aqui:
 
 * [Local](http://localhost:8080/swagger-ui.html)
 
