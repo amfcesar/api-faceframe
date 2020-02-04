@@ -2,6 +2,8 @@ FROM openjdk:8-jdk-alpine
 
 VOLUME /tmp
 
+RUN mkdir .image && cd .image && mkdir storage
+
 EXPOSE 8080
 
 #ARG JAR_FILE=target/apifaceframe-*.jar
