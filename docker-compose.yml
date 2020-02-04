@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 services:
   nginx:
     build:
@@ -12,22 +12,20 @@ services:
     depends_on:
       - "faceframe1"
       - "faceframe2"
-
   postgres:
-    container_name: postgres_container
+    container_name: postgres
     image: postgres
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD:
       POSTGRES_DB: faceframe
-      #PGDATA: /data/postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
     volumes:
-      - ./postgres:/data/postgres
+      - ./.postgres:/var/lib/postgresql/data/
     ports:
       - "5433:5432"
     networks:
       - production-network
-    restart: unless-stopped
+    restart: always
 
   faceframe1:
     build:
