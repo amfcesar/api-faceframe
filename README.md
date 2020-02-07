@@ -19,6 +19,9 @@ A arquitetura é bem simples. Todas as requisições, passam por um prox reverso
 e em seguinda são distribuida entre os dois containers da api, que por sua vez acessam
 o banco de dados. 
 
+
+![arquitetura](arquitetura.png)
+
 ## Configuração
 
 Clone o repositório na sua pasta de trabalho:
