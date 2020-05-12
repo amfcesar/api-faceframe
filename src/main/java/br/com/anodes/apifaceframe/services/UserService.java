@@ -42,4 +42,13 @@ public interface UserService {
      * @return
      */
     Optional<User> findById(Long id);
+
+    /**
+     *
+     * @param cpf
+     * @param email
+     * @return
+     */
+
+    Optional<User> findByCpfOrEmail(String cpf, String email);
 }

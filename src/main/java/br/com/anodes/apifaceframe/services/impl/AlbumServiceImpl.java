@@ -22,7 +22,7 @@ public class AlbumServiceImpl implements AlbumService {
     @Override
     public Optional<Album> findById(Long id) {
         log.info("Buscando um Album por o id {} ", id);
-        return Optional.ofNullable(albumRepository.findById(id).get());
+        return albumRepository.findById(id);
     }
 
     @Override

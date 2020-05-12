@@ -1,19 +1,20 @@
 package br.com.anodes.apifaceframe.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Setter
-@Getter
+@Data
 @Table(name = "tb_user")
 public class User extends BaseEntity<Long> implements UserDetails {
 

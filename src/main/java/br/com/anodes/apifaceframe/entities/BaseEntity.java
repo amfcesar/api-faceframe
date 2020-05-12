@@ -1,14 +1,15 @@
 package br.com.anodes.apifaceframe.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+@Data
 @MappedSuperclass
-@Setter
 public abstract class BaseEntity<ID extends Serializable> implements Serializable {
 
 
@@ -19,7 +20,7 @@ public abstract class BaseEntity<ID extends Serializable> implements Serializabl
     private LocalDate dataAtualizacao;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     public ID getId() {
         return id;
     }

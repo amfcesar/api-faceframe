@@ -14,6 +14,7 @@ services:
       - 'faceframe2'
   postgres:
     container_name: postgres
+    restart: always
     image: postgres
     environment:
       POSTGRES_DB: faceframe
@@ -25,28 +26,28 @@ services:
       - '5433:5432'
     networks:
       - production-network
-    restart: always
 
   faceframe1:
+    container_name: faceframe1
+    restart: always
     build:
       dockerfile: Dockerfile
       context: .
-    container_name: faceframe1
     ports:
       - '3000'
     networks:
       - production-network
 
   faceframe2:
+    container_name: faceframe2
+    restart: always
     build:
       dockerfile: Dockerfile
       context: .
-    container_name: faceframe2
     ports:
       - '3000'
     networks:
       - production-network
-
 networks:
   production-network:
     driver: bridge

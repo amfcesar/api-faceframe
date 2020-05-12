@@ -4,6 +4,7 @@ package br.com.anodes.apifaceframe.controller;
 import br.com.anodes.apifaceframe.dtos.AlbumDto;
 import br.com.anodes.apifaceframe.entities.Album;
 import br.com.anodes.apifaceframe.entities.Photo;
+import br.com.anodes.apifaceframe.entities.User;
 import br.com.anodes.apifaceframe.response.Response;
 import br.com.anodes.apifaceframe.services.AlbumService;
 import org.modelmapper.ModelMapper;
@@ -94,6 +95,26 @@ public class AlbumController {
 
 
         response.setData(modelMapper.map(album, new TypeToken<List<AlbumDto>>(){}.getType()));
+        return ResponseEntity.ok(response);
+    }
+
+    @PutMapping(path = "/{id}")
+    public ResponseEntity<Response<AlbumDto>> getAlbum(@PathVariable Long id, @Valid @RequestBody AlbumDto albumDto) {
+        log.info("Buscando Album por id: {}", albumDto);
+
+        Response<AlbumDto> response = new Response<>();
+        Optional<Album> album = albumService.findById(id);
+
+        if(!album.isPresent()) {
+            return ResponseEntity.noContent().build();
+        }
+
+        album.get().setUser(new User());
+        album.get().getUser().setId(albumDto.getUserId());
+
+        albumService.presist(album.get());
+
+        response.setData( modelMapper.map(album.get(), AlbumDto.class));
         return ResponseEntity.ok(response);
     }
 

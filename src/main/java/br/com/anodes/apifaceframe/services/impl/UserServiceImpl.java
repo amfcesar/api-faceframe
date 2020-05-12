@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
     };
 
     public User presist(User user) {
-        log.info("Persistindo post {}", user);
+        log.info("Persistindo post {}", user.toString());
         return this.userRepository.save(user);
     };
 
@@ -43,5 +43,10 @@ public class UserServiceImpl implements UserService {
     public Optional<User> findById(Long id) {
         log.info("Busca usario por id ", id);
         return userRepository.findById(id);
+    };
+
+    public Optional<User> findByCpfOrEmail(String cpf, String email) {
+        log.info("Busca usario por id ", email);
+        return Optional.ofNullable(userRepository.findByCpfOrEmail(cpf, email));
     };
 }
